@@ -7,7 +7,9 @@ GitHub-hosted `ubuntu-latest` runner. Pushes publish
 `dockerhub-tokens13/devopseasylearning:latest` to Docker Hub; pull requests build
 locally without publishing. GitHub-hosted runner usage is free within the
 allowance for your account and repository visibility; private repositories may
-have usage limits.
+have usage limits. On pushes, CI also starts the published image as a temporary
+container and prints its status and recent logs; it is removed with the runner
+after the workflow finishes.
 
 The repository must contain a `Dockerfile` in its root for the build to pass.
 

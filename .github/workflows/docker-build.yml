@@ -38,6 +38,14 @@ jobs:
         run: |
           docker pull "$IMAGE"
           docker image ls --no-trunc "$IMAGE"
+      - name: Start and inspect published container
+        if: github.event_name == 'push'
+        env:
+          IMAGE: dockerhub-tokens13/devopseasylearning:latest
+        run: |
+          docker run --detach --name devopseasylearning-container "$IMAGE"
+          docker inspect --format='Name={{.Name}} Image={{.Config.Image}} Status={{.State.Status}}' devopseasylearning-container
+          docker logs --tail 100 devopseasylearning-container
       - name: Show pull request Docker image
         if: github.event_name == 'pull_request'
         run: docker image ls --no-trunc s13-docker-pipeline:pr
