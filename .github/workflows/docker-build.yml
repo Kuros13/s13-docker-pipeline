@@ -13,4 +13,8 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
+          tags: s13-docker-pipeline:latest
+          load: true
           push: false
+      - name: Show built Docker image
+        run: docker image ls --no-trunc s13-docker-pipeline:latest
