@@ -1,6 +1,6 @@
 # s13-docker-pipeline
 
-## Build the Docker image on every push
+## Build the Docker image on every push and pull request
 
 GitHub Actions runs the Docker build on each push and pull request using the
 GitHub-hosted `ubuntu-latest` runner. The workflow builds the image but does not
